@@ -1,0 +1,34 @@
+{
+  "name": "xmlio-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "watch": "tsc -w"
+  },
+  "author": "Gijsjan Brouwer (https://github.com/Gijsjan)",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^1.11.0",
+    "xmlio": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.12",
+    "@types/puppeteer": "^1.11.1",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5",
+    "tslib": "^1.9.3",
+    "typescript": "^3.2.2"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ]
+  }
+}
