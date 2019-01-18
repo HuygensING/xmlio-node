@@ -1,14 +1,15 @@
-/// <reference types="xmlio" />
-
+/// <reference path="./xmlio.d.ts" />
 import puppeteer from 'puppeteer'
 
 function logWarning(warning: string) {
 	console.log(`[WARNING] ${warning}`)
 }
 
+type TransformerFunc = (xmlio: any) => any
+
 export default async function XMLioNode(
 	xml: string,
-	transformers: XMLioTransformer[] | Function = [],
+	transformers: XMLioTransformer[] | TransformerFunc = [],
 	exporters: Exporter[] = [],
 	options: DomParserOptions = {}
 ) {
@@ -49,7 +50,7 @@ export default async function XMLioNode(
 
 	const output: any = await page.evaluate(
 		function(xml: string, transformers: string, exporters: string, options: string, transformerArray: boolean) {
-			function unwrapStringFunction(func: string) {
+			const unwrapStringFunction = (func: string) => {
 				const outerFunc = new Function(`return ${func}`)
 				return outerFunc() // Return the inner function, because that is what the user passed
 			}

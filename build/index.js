@@ -40,10 +40,10 @@ function XMLioNode(xml, transformers = [], exporters = [], options = {}) {
             transformerString = transformers.toString();
         }
         const output = yield page.evaluate(function (xml, transformers, exporters, options, transformerArray) {
-            function unwrapStringFunction(func) {
+            const unwrapStringFunction = (func) => {
                 const outerFunc = new Function(`return ${func}`);
                 return outerFunc();
-            }
+            };
             const xmlio = new XMLio(xml, JSON.parse(options));
             if (transformerArray) {
                 JSON.parse(transformers).forEach((t) => {

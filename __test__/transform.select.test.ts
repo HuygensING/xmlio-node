@@ -19,7 +19,7 @@ describe('xmlio - select', () => {
 			[{ type: 'select', selector: '#does-not-exist' }],
 			[{ type: 'xml' }]
 		)
-		expect(output).toBe(xml)
+		expect(output).toBeNull()
 	})
 
 	test('Select with :not() selector', async () => {
